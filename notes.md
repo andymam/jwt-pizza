@@ -8,12 +8,12 @@ As part of `Deliverable ⓵ Development deployment: JWT Pizza`, start up the app
 | --------------------------------------------------- | ------------------ | ----------------- | ------------ |
 | View home page                                      |             home.tsx       |          None         |       None       |
 | Register new user<br/>(t@jwt.com, pw: test)         |          register.tsx          |       [POST] /api/auth            |       'INSERT INTO user (name, email, password) VALUES (?, ?, ?)', 'INSERT INTO userRole (userId, role, objectId) VALUES (?, ?, ?)', `INSERT INTO auth (token, userId) VALUES (?, ?)`       |
-| Login new user<br/>(t@jwt.com, pw: test)            |                    |                   |              |
+| Login new user<br/>(t@jwt.com, pw: test)            |         login.tsx           |        [PUT] /api/auth           |      `SELECT * FROM user WHERE email=?`, `SELECT * FROM userRole WHERE userId=?`        |
 | Order pizza                                         |                    |                   |              |
 | Verify pizza                                        |                    |                   |              |
 | View profile page                                   |                    |                   |              |
 | View franchise<br/>(as diner)                       |                    |                   |              |
-| Logout                                              |                    |                   |              |
+| Logout                                              |        logout.tsx            |        [DELETE] /api/auth           |       `DELETE FROM auth WHERE token=?`       |
 | View About page                                     |                    |                   |              |
 | View History page                                   |                    |                   |              |
 | Login as franchisee<br/>(f@jwt.com, pw: franchisee) |                    |                   |              |
