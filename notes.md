@@ -18,9 +18,9 @@ As part of `Deliverable ⓵ Development deployment: JWT Pizza`, start up the app
 | View History page                                   |         history.tsx           |         None          |      None        |
 | Login as franchisee<br/>(f@jwt.com, pw: franchisee) |         login.tsx           |        [PUT] /api/auth           |      `SELECT * FROM user WHERE email=?`, `SELECT * FROM userRole WHERE userId=?`        |
 | View franchise<br/>(as franchisee)                  |         franchiseDashboard.tsx           |         [GET] /api/franchise/3          |      `SELECT objectId FROM userRole WHERE role='franchisee' AND userId=?`,   `SELECT id, name FROM franchise WHERE id in (${franchiseIds.join(',')})`      |
-| Create a store                                      |                    |                   |              |
-| Close a store                                       |                    |                   |              |
-| Login as admin<br/>(a@jwt.com, pw: admin)           |                    |                   |              |
-| View Admin page                                     |                    |                   |              |
-| Create a franchise for t@jwt.com                    |                    |                   |              |
-| Close the franchise for t@jwt.com                   |                    |                   |              |
+| Create a store                                      |         createStore.tsx           |       [POST] /api/franchise/1/store            |       `SELECT userId FROM auth WHERE token=?`, `SELECT u.id, u.name, u.email FROM userRole AS ur JOIN user AS u ON u.id=ur.userId WHERE ur.objectId=? AND ur.role='franchisee'`      |
+| Close a store                                       |         closeStore.tsx           |       [DELETE] /api/franchise/1/store/2            |      `SELECT userId FROM auth WHERE token=?`, `SELECT u.id, u.name, u.email FROM userRole AS ur JOIN user AS u ON u.id=ur.userId WHERE ur.objectId=? AND ur.role='franchisee'`        |
+| Login as admin<br/>(a@jwt.com, pw: admin)           |        login.tsx            |         [PUT] /api/auth          |      `SELECT * FROM user WHERE email=?`, `SELECT * FROM userRole WHERE userId=?`        |
+| View Admin page                                     |        adminDashboard.tsx            |        [GET] /api/franchise           |      `SELECT id, name FROM franchise`,         |
+| Create a franchise for t@jwt.com                    |        createFranchise.tsx            |          [POST] /api/franchise         |       `SELECT userId FROM auth WHERE token=?`, `SELECT id, name FROM user WHERE email=?`,        |
+| Close the franchise for t@jwt.com                   |         closeFranchise.tsx           |        [DELETE] /api/franchise/:franchiseId           |     `DELETE FROM store WHERE franchiseId=?`, `DELETE FROM userRole WHERE objectId=?`, `DELETE FROM franchise WHERE id=?`         |
