@@ -57,3 +57,5 @@ Dependency Injection works by passing an object (a *dependency*) into a class or
 
 
 [ ToppingService ] ---> injected into ---> [ PizzaService ]
+
+I notice that this is something we have done in a lot of our code, I just didn't know that I was doing dependency injection. Cool stuff.
