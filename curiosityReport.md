@@ -13,7 +13,7 @@ According to Gemini, Dependency Injection (DI) is a software design pattern that
 
 From what I understand, instead of doing something like this:
 
-
+```javascript
 class PizzaService {
   constructor() {
     this.toppingService = new ToppingService(); // tightly coupled
@@ -23,9 +23,11 @@ class PizzaService {
     return `Pizza with ${this.toppingService.getToppings()}`;
   }
 }
+```
 
 It is doing something like this:
 
+```javascript
 class PizzaService {
   constructor(toppingService) {
     this.toppingService = toppingService;
@@ -35,6 +37,7 @@ class PizzaService {
     return `Pizza with ${this.toppingService.getToppings()}`;
   }
 }
+```
 
 The second example using DI makes the code less coupled.
 
@@ -53,4 +56,4 @@ It also makes the code more reusable and changeable.
 Dependency Injection works by passing an object (a *dependency*) into a class or function, rather than having that class create the object itself.
 
 
-![Dependency Injection Diagram](./A_2D_digital_diagram_illustrates_Dependency_Inject.png)
+[ ToppingService ] ---> injected into ---> [ PizzaService ]
