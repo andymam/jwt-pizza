@@ -1,33 +1,56 @@
 # Curiosity Report: Dependency Injection
 
 ## Introduction
-*Why did you choose this topic? What drew your curiosity?*
+*Why dependency injection?*
 
-(Example: I chose Dependency Injection because I kept encountering the term in software architecture discussions and wanted to understand how it improves code maintainability and testability.)
-
+I chose to learn more about dependency injection because I have seen it in a few of my classes and no matter which context I heard about it in, I
+could not understand it at all.
 ---
 
 ## What Is Dependency Injection?
-*A clear and concise explanation of the topic in your own words.*
 
----
+According to Gemini, Dependency Injection (DI) is a software design pattern that promotes loose coupling and testability by making a class independent of its dependencies, meaning it doesn't create or manage its own dependencies, but instead receives them from an external source.
 
-## Why Is Dependency Injection Useful?
-*Discuss the benefits and common use cases. How does it help developers?*
+From what I understand, instead of doing something like this:
 
----
 
-## How Does It Work?
-*Explain the concept with examples or analogies. Code snippets are welcome here.*
+class PizzaService {
+  constructor() {
+    this.toppingService = new ToppingService(); // tightly coupled
+  }
 
-```javascript
-// Example of dependency injection in JavaScript
+  makePizza() {
+    return `Pizza with ${this.toppingService.getToppings()}`;
+  }
+}
+
+It is doing something like this:
+
 class PizzaService {
   constructor(toppingService) {
     this.toppingService = toppingService;
   }
 
-  createPizza() {
+  makePizza() {
     return `Pizza with ${this.toppingService.getToppings()}`;
   }
 }
+
+The second example using DI makes the code less coupled.
+
+---
+
+## Why Is Dependency Injection Useful?
+
+Some common advantages are for testing/mocking purposes. It is way easier to create mocks for a function or class when it uses DI rather than creating an instance of a class object inside it.
+
+It also makes the code more reusable and changeable. 
+
+---
+
+## How Does It Work?
+
+Dependency Injection works by passing an object (a *dependency*) into a class or function, rather than having that class create the object itself.
+
+
+![Dependency Injection Diagram](./A_2D_digital_diagram_illustrates_Dependency_Inject.png)
