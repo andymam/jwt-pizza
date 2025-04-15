@@ -22,7 +22,7 @@
 | **Classification**| Privilege Escalation                                                 |
 | **Severity**      | High                                                                 |
 | **Description**   | Attempted to upgraded regular user to admin and create franchise.     |
-| **Images**        | ![Penetration Test Image](PenPic.png)                         A fake user created the "Ur Mom" franchise, which is non-functional and not serviceable to customers. |
+| **Images**        | ![Penetration Test Image](Penpic.png)                         A fake user created the "Ur Mom" franchise, which is non-functional and not serviceable to customers. |
 | **Corrections**   | Sanitized inputs and enforced role-based access control.       |
 
 
